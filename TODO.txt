@@ -1,0 +1,4 @@
+-Change skills info
+-Change fonts
+-Make skill info placeholder have contrast
+-Change Icons

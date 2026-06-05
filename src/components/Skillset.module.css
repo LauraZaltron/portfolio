@@ -1,0 +1,180 @@
+.section {
+  padding: 16px 6vw 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 36px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+/* ── Basket ── */
+.basketWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 0;   /* room for both handles */
+}
+
+.basket {
+  position: relative;
+  background: transparent;
+  border: 3px solid #2a2a2a;
+  border-radius: 16px;        /* rounded on all sides now */
+  padding: 3px; /* makes skill icons fit within the border */
+  width: 220px;
+  min-height: 200px;
+}
+
+/* Wire grid*/
+.basket::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 28px, rgba(42,42,42,0.25) 28px, rgba(42,42,42,0.25) 30px),
+    repeating-linear-gradient(90deg, transparent, transparent 28px, rgba(42,42,42,0.25) 28px, rgba(42,42,42,0.25) 30px);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* TOP handle — arches upward */
+.handleTop {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 30px;
+  border: 3px solid #2a2a2a;
+  border-bottom: none;
+  border-radius: 40px 40px 0 0;
+}
+
+/* BOTTOM handle — arches downward */
+.handleBottom {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 30px;
+  border: 3px solid #2a2a2a;
+  border-top: none;
+  border-radius: 0 0 40px 40px;
+}
+
+.basketGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+  padding: 0 4px; /* prevent icons from touching wireframe edges */
+}
+
+/* ── Skill icons ── */
+.skillIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 14px;
+  background: #fff;
+  border: 2px solid var(--beige);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  padding: 7px;
+  box-shadow: 0 2px 8px rgba(45,36,22,0.10);
+}
+
+.skillIcon:hover,
+.skillActive {
+  transform: scale(1.18) rotate(-4deg);
+  box-shadow: 0 8px 20px rgba(45,36,22,0.20);
+  border-color: var(--skill-color, var(--bronze));
+}
+
+.svgIcon {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.svgIcon svg { width: 100%; height: 100%; }
+
+/* ── Info panel ── */
+.infoPanel {
+  background: var(--sage);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 40px 44px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.infoPanelActive {
+  background: var(--papaya);
+  box-shadow: var(--shadow);
+}
+
+.infoBadge {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  align-self: flex-start;
+}
+
+.infoName {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.infoDesc {
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  line-height: 1.78;
+}
+
+.infoHint {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--bronze);
+  text-align: center;
+  line-height: 1.7;
+  font-family: var(--font-body);
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 32px;
+  }
+  .infoPanel { width: 100%; min-height: 160px; padding: 28px 24px; }
+}

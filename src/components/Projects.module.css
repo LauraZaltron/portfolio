@@ -1,0 +1,83 @@
+.section {
+  padding: 8px 6vw 48px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Wooden frame = border on .board, cork texture inside .boardFrame */
+.board {
+  border-radius: var(--radius-lg);
+  padding: 4px;
+  background: linear-gradient(145deg, #a06828 0%, #c8973a 30%, #8c5e22 70%, #b07a30 100%);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+}
+
+.boardFrame {
+  border-radius: calc(var(--radius-lg) - 4px);
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(180,130,60,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(140,90,20,0.2) 0%, transparent 60%),
+    repeating-conic-gradient(#b87d3a 0%, #c8903f 12.5%, #a06828 25%, #bf8a3a 37.5%) 0 0 / 8px 8px;
+  padding: 36px 40px 44px;
+  position: relative;
+  min-height: 380px;
+} 
+
+/* slight dark vignette so cards pop */
+.boardFrame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(40,20,0,0.18) 100%);
+  pointer-events: none;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text);
+  text-align: right;
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 1;
+  /* subtle text shadow so it reads on cork */
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.4);
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+/* staggered heights + slight tilts = pinned-to-board feel */
+.cardGrid > :nth-child(1) { margin-top: 0px;  transform: rotate(-1.8deg); }
+.cardGrid > :nth-child(2) { margin-top: 48px; transform: rotate(1.1deg); }
+.cardGrid > :nth-child(3) { margin-top: 90px; transform: rotate(-0.6deg); }
+
+.cardGrid > :nth-child(1):hover,
+.cardGrid > :nth-child(2):hover,
+.cardGrid > :nth-child(3):hover { transform: rotate(0deg) translateY(-8px) scale(1.02); }
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .section { padding: 8px 4vw 36px; }
+  .board { padding: 10px; }
+  .boardFrame { padding: 28px 20px 40px; min-height: auto; }
+  .heading { text-align: center; margin-bottom: 24px; }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+    gap: 36px;
+  }
+  .cardGrid > :nth-child(1),
+  .cardGrid > :nth-child(2),
+  .cardGrid > :nth-child(3) { margin-top: 0; transform: none; }
+}

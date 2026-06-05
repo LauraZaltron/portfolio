@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Nunito:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sage:       #ccd5ae;
+  --beige:      #e9edc9;
+  --cornsilk:   #fefae0;
+  --papaya:     #faedcd;
+  --bronze:     #d4a373;
+  --bronze-dark:#b8864f;
+  --pink:       #f2c4ce;
+  --pink-dark:  #e8a0b0;
+  --text:       #2d2416;
+  --text-muted: #7a6e5f;
+  --border:     #d4cbb8;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body:    'Nunito', sans-serif;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --shadow:  0 2px 16px rgba(45,36,22,0.10), 0 1px 4px rgba(45,36,22,0.07);
+  --shadow-lg: 0 8px 40px rgba(45,36,22,0.16), 0 2px 8px rgba(45,36,22,0.10);
+  --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--cornsilk);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }

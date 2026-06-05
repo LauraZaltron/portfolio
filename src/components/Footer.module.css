@@ -1,0 +1,14 @@
+.footer {
+  background: var(--sage);
+  border-top: 1.5px solid var(--bronze);
+  padding: 28px 6vw;
+  text-align: center;
+  margin-top: 24px;
+}
+
+.text {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
